@@ -9,6 +9,6 @@ public class TestBase {
 
     @BeforeClass
     public static void setTestConfiguration(){
-        query.setQueryConfig("http://petstore.swagger.io");
+        query.setQueryConfig(System.getProperty("websiteName"));
     }
 }
