@@ -19,5 +19,12 @@ public class TestOrder extends TestBase {
         response = query.addOrder(orderToAdd);
 
         Assert.assertEquals(200, response.getStatusCode());
+
+        // Get order from the store by id
+        response = query.getOrderById(orderToAdd.getId());
+        Order actualOrder = response.getBody().as(Order.class);
+
+        Assert.assertEquals(200, response.getStatusCode());
+
     }
 }

@@ -65,4 +65,15 @@ public class TestPetStoreQuery {
                 .extract()
                 .response();
     }
+
+    public Response getOrderById(Object orderId) {
+        return given()
+                .basePath(orderBasePath)
+                .pathParam("orderId", orderId)
+                .when()
+                .get("/{orderId}")
+                .then()
+                .extract()
+                .response();
+    }
 }

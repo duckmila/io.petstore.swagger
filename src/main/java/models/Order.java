@@ -32,4 +32,8 @@ public class Order {
         complete = false;
         return this;
     }
+
+    public Object getId() {
+        return id;
+    }
 }
