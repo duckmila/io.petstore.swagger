@@ -10,6 +10,8 @@ import static io.restassured.RestAssured.given;
 
 public class TestPetStoreQuery {
 
+    private static String basePath = "/v2/pet";
+
     public void setQueryConfig (String websiteName){
         RestAssured.requestSpecification = new RequestSpecBuilder()
                 .setBaseUri(websiteName)
@@ -20,10 +22,21 @@ public class TestPetStoreQuery {
 
     public Response addPet(Pet petToAdd) {
         return given()
-                .basePath("/v2/pet")
+                .basePath(basePath)
                 .body(petToAdd)
                 .when()
                 .post()
+                .then()
+                .extract()
+                .response();
+    }
+
+    public Response deletePetById(Integer petId){
+        return given()
+                .basePath(basePath)
+                .pathParam("petId", petId)
+                .when()
+                .delete("/{petId}")
                 .then()
                 .extract()
                 .response();

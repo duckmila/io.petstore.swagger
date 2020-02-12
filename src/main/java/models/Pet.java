@@ -45,4 +45,8 @@ public class Pet {
                 this.tags.equals(that.tags) &&
                 this.status.equals(that.status);
     }
+
+    public Integer getId() {
+        return id;
+    }
 }

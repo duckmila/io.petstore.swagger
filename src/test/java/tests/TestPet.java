@@ -5,10 +5,12 @@ import models.Pet;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 public class TestPet {
 
     private static TestPetStoreQuery query;
+    private static Response response;
 
     @BeforeClass
     public static void setTestConfiguration(){
@@ -19,10 +21,26 @@ public class TestPet {
     @Test
     public void testAddNewPet(){
         Pet petToAdd = new Pet().generateTestData();
-        Response response = query.addPet(petToAdd);
+        response = query.addPet(petToAdd);
         Pet actualPet = response.getBody().as(Pet.class);
 
         Assert.assertEquals(200, response.getStatusCode());
         Assert.assertEquals(petToAdd, actualPet);
     }
+
+    @Test
+    public void testDeleteExistedPet() {
+        //Add new pet to the store
+        Pet petToDelete = new Pet().generateTestData();
+        response = query.addPet(petToDelete);
+
+        Assert.assertEquals(200, response.getStatusCode());
+
+        //Delete pet added to the store
+        response = query.deletePetById(petToDelete.getId());
+
+        Assert.assertEquals(200, response.getStatusCode());
+    }
+
+
 }
