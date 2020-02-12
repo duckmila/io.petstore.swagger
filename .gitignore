@@ -1,3 +1,4 @@
 /.idea/
 /io.petstore.swagger.iml
 /target/
+/.allure/
