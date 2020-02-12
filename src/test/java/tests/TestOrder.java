@@ -4,9 +4,12 @@ import models.Order;
 import models.Pet;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 public class TestOrder extends TestBase {
+
     @Test
+    @Category(TestOrder.class)
     public void testAddNewOrder(){
         // Add new pet to the store
         Pet petToAdd = new Pet().generateTestData();

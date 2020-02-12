@@ -1,13 +1,14 @@
 package tests;
 
 import models.Pet;
-import models.Tag;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 public class TestPet extends TestBase {
 
     @Test
+    @Category(TestPet.class)
     public void testAddNewPet(){
         Pet petToAdd = new Pet().generateTestData();
         response = query.addPet(petToAdd);
@@ -18,6 +19,7 @@ public class TestPet extends TestBase {
     }
 
     @Test
+    @Category(TestPet.class)
     public void testDeleteExistedPet() {
         //Add new pet to the store
         Pet petToDelete = new Pet().generateTestData();
