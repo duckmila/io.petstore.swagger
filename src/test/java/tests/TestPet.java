@@ -2,6 +2,7 @@ package tests;
 
 import io.restassured.response.Response;
 import models.Pet;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -12,12 +13,16 @@ public class TestPet {
     @BeforeClass
     public static void setTestConfiguration(){
         query = new TestPetStoreQuery();
-        query.setQueryConfig("http://petstore.swagger/io");
+        query.setQueryConfig("http://petstore.swagger.io");
     }
 
     @Test
     public void testAddNewPet(){
         Pet petToAdd = new Pet().generateTestData();
         Response response = query.addPet(petToAdd);
+        Pet actualPet = response.getBody().as(Pet.class);
+
+        Assert.assertEquals(200, response.getStatusCode());
+        Assert.assertEquals(petToAdd, actualPet);
     }
 }

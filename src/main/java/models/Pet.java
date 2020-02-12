@@ -30,4 +30,19 @@ public class Pet {
         status = "AVAILABLE";
         return this;
     }
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Pet that = (Pet) obj;
+
+        return this.id.equals(that.id) &&
+                this.name.equals(that.name) &&
+                this.category.equals(that.category) &&
+                this.photoUrls.equals(that.photoUrls) &&
+                this.tags.equals(that.tags) &&
+                this.status.equals(that.status);
+    }
 }
