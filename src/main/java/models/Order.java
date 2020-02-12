@@ -36,4 +36,23 @@ public class Order {
     public Object getId() {
         return id;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Order that = (Order) obj;
+
+        return this.id.equals(that.id) &&
+                this.shipDate.equals(that.shipDate) &&
+                this.complete == that.complete &&
+                this.quantity.equals(that.quantity) &&
+                this.petId.equals(that.petId) &&
+                this.status.equals(that.status);
+    }
 }

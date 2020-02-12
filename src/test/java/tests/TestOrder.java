@@ -25,6 +25,7 @@ public class TestOrder extends TestBase {
         Order actualOrder = response.getBody().as(Order.class);
 
         Assert.assertEquals(200, response.getStatusCode());
-
+        Assert.assertEquals("PLACED", actualOrder.getStatus());
+        Assert.assertEquals(orderToAdd, actualOrder);
     }
 }
