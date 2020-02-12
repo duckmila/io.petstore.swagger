@@ -16,5 +16,8 @@ public class TestOrder extends TestBase {
 
         // Add new order to the store
         Order orderToAdd = new Order().generateTestData(petToAdd.getId());
+        response = query.addOrder(orderToAdd);
+
+        Assert.assertEquals(200, response.getStatusCode());
     }
 }

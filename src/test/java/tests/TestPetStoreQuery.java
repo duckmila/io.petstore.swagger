@@ -4,13 +4,15 @@ import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import models.Order;
 import models.Pet;
 
 import static io.restassured.RestAssured.given;
 
 public class TestPetStoreQuery {
 
-    private static String basePath = "/v2/pet";
+    private static String petBasePath = "/v2/pet";
+    private static String orderBasePath = "/v2/store/order";
 
     public void setQueryConfig (String websiteName){
         RestAssured.requestSpecification = new RequestSpecBuilder()
@@ -22,7 +24,7 @@ public class TestPetStoreQuery {
 
     public Response addPet(Pet petToAdd) {
         return given()
-                .basePath(basePath)
+                .basePath(petBasePath)
                 .body(petToAdd)
                 .when()
                 .post()
@@ -33,7 +35,7 @@ public class TestPetStoreQuery {
 
     public Response deletePetById(Integer petId){
         return given()
-                .basePath(basePath)
+                .basePath(petBasePath)
                 .pathParam("petId", petId)
                 .when()
                 .delete("/{petId}")
@@ -44,10 +46,21 @@ public class TestPetStoreQuery {
 
     public Response getPetById(Integer petId) {
         return given()
-                .basePath(basePath)
+                .basePath(petBasePath)
                 .pathParam("petId", petId)
                 .when()
                 .get("/{petId}")
+                .then()
+                .extract()
+                .response();
+    }
+
+    public Response addOrder(Order orderToAdd) {
+        return given()
+                .basePath(orderBasePath)
+                .body(orderToAdd)
+                .when()
+                .post()
                 .then()
                 .extract()
                 .response();
