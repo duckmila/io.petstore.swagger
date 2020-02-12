@@ -40,6 +40,11 @@ public class TestPet {
         response = query.deletePetById(petToDelete.getId());
 
         Assert.assertEquals(200, response.getStatusCode());
+
+        //Get deleted pet from the store
+        response = query.getPetById(petToDelete.getId());
+
+        Assert.assertEquals(404, response.getStatusCode());
     }
 
 

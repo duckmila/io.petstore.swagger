@@ -41,4 +41,15 @@ public class TestPetStoreQuery {
                 .extract()
                 .response();
     }
+
+    public Response getPetById(Integer petId) {
+        return given()
+                .basePath(basePath)
+                .pathParam("petId", petId)
+                .when()
+                .get("/{petId}")
+                .then()
+                .extract()
+                .response();
+    }
 }
