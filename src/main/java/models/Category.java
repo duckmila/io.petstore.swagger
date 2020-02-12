@@ -7,4 +7,9 @@ public class Category {
     private Integer id;
     @JsonProperty
     private String name;
+
+    public Category(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }
