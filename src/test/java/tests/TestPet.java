@@ -1,11 +1,9 @@
 package tests;
 
-import io.restassured.response.Response;
 import models.Pet;
+import models.Tag;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
 public class TestPet extends TestBase {
 
