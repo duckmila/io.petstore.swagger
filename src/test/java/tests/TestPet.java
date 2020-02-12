@@ -7,16 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-public class TestPet {
-
-    private static TestPetStoreQuery query;
-    private static Response response;
-
-    @BeforeClass
-    public static void setTestConfiguration(){
-        query = new TestPetStoreQuery();
-        query.setQueryConfig("http://petstore.swagger.io");
-    }
+public class TestPet extends TestBase {
 
     @Test
     public void testAddNewPet(){
