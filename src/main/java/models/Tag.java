@@ -2,9 +2,7 @@ package models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Tag {
-    @JsonProperty
-    private Integer id;
+public class Tag extends EntityBase {
     @JsonProperty
     private String name;
 

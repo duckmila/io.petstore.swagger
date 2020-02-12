@@ -6,9 +6,7 @@ import com.github.javafaker.Faker;
 import java.util.Collections;
 import java.util.List;
 
-public class Pet {
-    @JsonProperty
-    private Integer id;
+public class Pet extends EntityBase {
     @JsonProperty
     private Category category;
     @JsonProperty

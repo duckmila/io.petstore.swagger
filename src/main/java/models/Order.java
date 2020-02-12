@@ -2,9 +2,7 @@ package models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Order {
-    @JsonProperty
-    protected Integer id;
+public class Order extends EntityBase {
     @JsonProperty
     private  Integer petId;
     @JsonProperty

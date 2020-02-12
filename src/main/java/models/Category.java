@@ -2,9 +2,7 @@ package models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Category {
-    @JsonProperty
-    private Integer id;
+public class Category extends EntityBase {
     @JsonProperty
     private String name;
 
